@@ -23,7 +23,8 @@ At the time of writing, this patch should be applicable to the latest mainline k
 ```git clone https://github.com/torvalds/linux
 git clone https://github.com/KarsMulder/Linux-Pollrate-Patch
 cd linux
-git apply ../Linux-Pollrate-Patch/pollrate.patch```
+git apply ../Linux-Pollrate-Patch/pollrate.patch
+```
 
 The way to compile and install the kernel is distribution specific.
 
