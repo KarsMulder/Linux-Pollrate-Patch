@@ -18,7 +18,7 @@ index a1068742a6df..99bd3b31ea63 100644
  			[USBHID] The interval which mice are to be polled at.
  
 diff --git a/drivers/usb/core/config.c b/drivers/usb/core/config.c
-index 562a730befda..cd27c311c1eb 100644
+index 562a730befda..b6e51182ca5b 100644
 --- a/drivers/usb/core/config.c
 +++ b/drivers/usb/core/config.c
 @@ -19,6 +19,149 @@
@@ -44,7 +44,7 @@ index 562a730befda..cd27c311c1eb 100644
 +
 +static int interrupt_interval_override_param_set(const char *value, const struct kernel_param *kp)
 +{
-+	char *p;
++	const char *p;
 +	unsigned short vendor, product;
 +	unsigned int interval;
 +	struct interrupt_interval_override* list;
@@ -87,8 +87,8 @@ index 562a730befda..cd27c311c1eb 100644
 +		return err;
 +	}
 +
-+	/* Parse the parameter. Example of a valid parameter: 12a8:9bc5:1,b4f1:ce38:16 */
-+	for (count = 0, p = (char*)value; p && *p;) {
++	/* Parse the parameter. Example of a valid parameter: 045e:00db:16,1bcf:0005:2 */
++	for (count = 0, p = (const char*)value; p && *p;) {
 +		res = sscanf(p, "%hx:%hx:%d%zn", &vendor, &product, &interval, &len);
 +
 +		/* Check whether all variables (vendor, product, interval, len) were assigned.
@@ -105,10 +105,10 @@ index 562a730befda..cd27c311c1eb 100644
 +		list[count++] = param;
 +
 +		p += len;
-+		if (*p == ',' && *(p+1) != NULL) {
++		if (*p == ',' && *(p+1) != '\0') {
 +			p++;
 +			continue;
-+		} else if(*p == NULL || (*p == '\n' && *(p+1) == NULL)) {
++		} else if(*p == '\0' || (*p == '\n' && *(p+1) == '\0')) {
 +			break;
 +		} else {
 +			pr_warn("Error while parsing USB interrupt interval override parameter %s.\n", value);
