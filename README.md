@@ -20,7 +20,8 @@ Not all USB devices support all polling intervals. Using a polling interval othe
 
 At the time of writing, this patch should be applicable to the latest mainline kernel, and probably every kernel since 5.9-rc1. The patch will NOT directly apply to the 5.8.* kernels or older. To create a patched version of the Linux source code, do something like:
 
-```git clone https://github.com/torvalds/linux
+```
+git clone https://github.com/torvalds/linux
 git clone https://github.com/KarsMulder/Linux-Pollrate-Patch
 cd linux
 git apply ../Linux-Pollrate-Patch/pollrate.patch
