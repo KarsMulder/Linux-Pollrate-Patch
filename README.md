@@ -29,6 +29,25 @@ git apply ../Linux-Pollrate-Patch/pollrate.patch
 
 The way to compile and install the kernel is distribution specific.
 
+
+File locations:
+
+/etc/custom-device-pollrates/custom-device-pollrates.conf
+/usr/bin/custom-device-pollrates.sh
+/usr/lib/systemd/system/custom-device-pollrates.service
+/usr/lib/systemd/system-presets/99-custom-device-pollrates.preset
+
+Start the service:
+
+# systemctl daemon-reload
+# systemctl enable --now custom-device-pollrates.service
+
+Add devices here:
+/etc/custom-device-pollrates/custom-device-pollrates.conf
+
+Fedora rpm build spec sheet included for custom-device-pollrates patch.
+
+
 # Legalese
 
 This program is provided under the terms and condiditions of the GNU General Public License version 2. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
