@@ -1,5 +1,5 @@
 %global _default_patch_fuzz 2
-%global baserelease 1
+%global baserelease 4
 
 
 Name:           custom-device-pollrates
@@ -7,7 +7,7 @@ Version:        1.0.0
 Release:        %{baserelease}%{?dist}
 Summary:        Allows setting custom polling rates for USB devices, requires kernel patch.
 
-License:        GPLv3+
+License:        GPLv2+
 URL:            https://github.com/GloriousEggroll/Linux-Pollrate-Patch
 
 
@@ -16,6 +16,8 @@ Source0: custom-device-pollrates.sh
 Source1: 99-custom-device-pollrates.preset
 Source2: custom-device-pollrates.service
 Source3: custom-device-pollrates.conf
+
+BuildRequires: systemd-rpm-macros
 
 %description
 This is a service that is built around the following kernel patch from:
