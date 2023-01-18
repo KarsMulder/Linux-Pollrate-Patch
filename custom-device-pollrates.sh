@@ -1,6 +1,7 @@
 #!/bin/bash
+set -m
 
-Gather device poll rate settings from /etc/custom-device-pollrates/custom-device-pollrates.conf
+# Gather device poll rate settings from /etc/custom-device-pollrates/custom-device-pollrates.conf
 DEVICES=$(grep -v '^\s*$\|^\s*\#' /etc/custom-device-pollrates/custom-device-pollrates.conf | paste -sd, -)
 
 # Set new polling rate for devices
