@@ -33,8 +33,8 @@ mkdir -p %{buildroot}%{_presetdir}/
 mkdir -p %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_sysconfdir}/custom-device-pollrates
 install -Dm755 %{SOURCE0} %{buildroot}%{_bindir}/custom-device-pollrates.sh
-install -Dm644 %{SOURCE1} %{buildroot}%{_presetdir}/99-custom-device-pollrates.preset
-install -Dm644 %{SOURCE2} %{buildroot}%{_unitdir}/custom-device-pollrates.service
+install -Dm644 %{SOURCE1} %{buildroot}%{_prefix}/lib/systemd/system-preset/99-custom-device-pollrates.preset
+install -Dm644 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/system/custom-device-pollrates.service
 install -Dm644 %{SOURCE3} %{buildroot}%{_sysconfdir}/custom-device-pollrates/custom-device-pollrates.conf
 
 %post
@@ -48,8 +48,8 @@ install -Dm644 %{SOURCE3} %{buildroot}%{_sysconfdir}/custom-device-pollrates/cus
 
 %files
 %{_bindir}/custom-device-pollrates.sh
-%{_presetdir}/99-custom-device-pollrates.preset
-%{_unitdir}/custom-device-pollrates.service
+%{_prefix}/lib/systemd/system/custom-device-pollrates.service
+%{_prefix}/lib/systemd/system-preset/99-custom-device-pollrates.preset
 %{_sysconfdir}/custom-device-pollrates/custom-device-pollrates.conf
 
 %changelog
